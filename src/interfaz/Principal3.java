@@ -59,9 +59,19 @@ public class Principal3 extends javax.swing.JFrame {
         jPanel1.add(txtSaldoFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 210, 90, 30));
 
         cmdCalcular.setText("Calcular");
+        cmdCalcular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdCalcularActionPerformed(evt);
+            }
+        });
         jPanel1.add(cmdCalcular, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 250, -1, -1));
 
         cmdBorrar.setText("Borrar");
+        cmdBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdBorrarActionPerformed(evt);
+            }
+        });
         jPanel1.add(cmdBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 280, -1, -1));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 470, 10));
 
@@ -78,6 +88,29 @@ public class Principal3 extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cmdCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdCalcularActionPerformed
+    String res;
+    double total,monto;
+    
+    monto= Double.parseDouble(txtMontoAhorrado.getText());
+        
+    total= monto+(monto*1.5/100);
+    
+    res= String.valueOf(total);
+    txtSaldoFinal.setText(res);
+    
+    }//GEN-LAST:event_cmdCalcularActionPerformed
+
+    private void cmdBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdBorrarActionPerformed
+       
+    txtMontoAhorrado.setText("");
+    txtSaldoFinal.setText("");
+    
+    txtMontoAhorrado.requestFocusInWindow();  
+        
+        
+    }//GEN-LAST:event_cmdBorrarActionPerformed
 
     /**
      * @param args the command line arguments
