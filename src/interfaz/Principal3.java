@@ -5,6 +5,8 @@
  */
 package interfaz;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author sony
@@ -49,6 +51,12 @@ public class Principal3 extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
         jLabel2.setText("Monto Ahorrado");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, 160, -1));
+
+        txtMontoAhorrado.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtMontoAhorradoKeyTyped(evt);
+            }
+        });
         jPanel1.add(txtMontoAhorrado, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, 110, 30));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
@@ -93,13 +101,20 @@ public class Principal3 extends javax.swing.JFrame {
     String res;
     double total,monto;
     
+    if(txtMontoAhorrado.getText().isEmpty()){
+     JOptionPane.showMessageDialog(this, "Digite El Monto Ahorrado","Error",JOptionPane.ERROR_MESSAGE);
+     txtMontoAhorrado.requestFocusInWindow();
+     }
+    
+    else{
+         
     monto= Double.parseDouble(txtMontoAhorrado.getText());
         
     total= monto+(monto*1.5/100);
     
     res= String.valueOf(total);
     txtSaldoFinal.setText(res);
-    
+    }
     }//GEN-LAST:event_cmdCalcularActionPerformed
 
     private void cmdBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdBorrarActionPerformed
@@ -109,8 +124,17 @@ public class Principal3 extends javax.swing.JFrame {
     
     txtMontoAhorrado.requestFocusInWindow();  
         
-        
+       
     }//GEN-LAST:event_cmdBorrarActionPerformed
+
+    private void txtMontoAhorradoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMontoAhorradoKeyTyped
+     
+        char c=evt.getKeyChar(); 
+     if(!Character.isDigit(c)) { 
+              getToolkit().beep();  
+              evt.consume();
+          }  
+    }//GEN-LAST:event_txtMontoAhorradoKeyTyped
 
     /**
      * @param args the command line arguments
